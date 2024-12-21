@@ -8,7 +8,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "export": "cp src/index.html src/script.js src/styles.css \"/mnt/c/Program Files (x86)/Steam/steamapps/common/wallpaper_engine/projects/myprojects/matrix_rain/\""
   },
   "devDependencies": {
     "typescript": "^5.7.2"
