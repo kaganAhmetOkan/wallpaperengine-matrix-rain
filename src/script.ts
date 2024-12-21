@@ -15,6 +15,12 @@ const context = canvas.getContext("2d");
 
 if (!context) throw new Error("Browser does not support <canvas> element.");
 
+// FPS CONTROLS
+let interval: number;
+let now: number;
+let then: number;
+let elapsed: number;
+
 // PAINT CANVAS BLACK
 context.fillStyle = "#000";
 context.fillRect(0, 0, canvas.width, canvas.height);
@@ -30,7 +36,14 @@ function draw() {
 
   requestAnimationFrame(draw);
 
-  context.fillStyle = "rgba(0,0,0,0.05)";
+  now = Date.now();
+  elapsed = now - then;
+
+  if (elapsed < interval) return;
+
+  then = now - (elapsed % interval);
+
+  context.fillStyle = "rgba(0,0,0,0.1)";
   context.fillRect(0, 0, canvas.width, canvas.height);
 
   context.fillStyle = "#0F0";
@@ -48,4 +61,10 @@ function draw() {
   });
 }
 
-draw();
+function startDrawing(fps: number) {
+  interval = 1000 / fps;
+  then = Date.now();
+  draw();
+}
+
+startDrawing(40);
