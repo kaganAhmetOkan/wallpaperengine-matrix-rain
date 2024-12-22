@@ -108,11 +108,14 @@ function main() {
     context.fillStyle = `rgba(${backgroundRepaint})`;
     context.fillRect(0, 0, canvas.width, canvas.height);
 
-    context.fillStyle = `rgb(${textColor})`;
     context.font = `${fontSize}px ${font}, monospace`;
 
     positions.forEach((position, index) => {
+      context.fillStyle = `rgb(${backgroundColor})`;
+      context.fillText("█", index * fontSize, position * fontSize);
+
       const char = chars[Math.floor(Math.random() * chars.length)];
+      context.fillStyle = `rgb(${textColor})`;
       context.fillText(char, index * fontSize, position * fontSize);
 
       if (position * fontSize > canvas.height && Math.random() > 0.975) {
