@@ -44,6 +44,7 @@ window.wallpaperPropertyListener = {
         .map((c) => Math.ceil(parseFloat(c) * 255))
         .join(",");
       backgroundRepaint = `${backgroundColor},${fade}`;
+      main();
     }
 
     if (properties.fade) {
